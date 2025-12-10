@@ -1,10 +1,10 @@
 package tools;
 
 import data.Drink;
+import data.Ingredient;
+import haxe.ds.ArraySort;
 
 class DrinkTools {
-
-    public static var drinkMap:Map<DrinkName, Drink>;
 
     public static function countIngredients(drink:Drink) {
         var num:Int = 0;
@@ -23,6 +23,45 @@ class DrinkTools {
             }
         }
 
+		// sort code by ashes999
+		drinkA.attributes.sort(function(a:String, b:String):Int
+		{
+			a = a.toUpperCase();
+			b = b.toUpperCase();
+
+			if (a < b)
+			{
+				return -1;
+			}
+			else if (a > b)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		});
+
+		drinkB.attributes.sort(function(a:String, b:String):Int
+		{
+			a = a.toUpperCase();
+			b = b.toUpperCase();
+
+			if (a < b)
+			{
+				return -1;
+			}
+			else if (a > b)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		});
+
         for (i in 0...drinkA.attributes.length) {
             if (drinkB.attributes[i] != drinkA.attributes[i]) {
                 return false;
@@ -32,5 +71,47 @@ class DrinkTools {
         return true;
     }
 
+	public static inline function ingredientExists(drink:Drink, ingredient:Ingredient)
+	{
+		return drink.ingredients != null && drink.ingredients.exists(ingredient);
+	}
 
+	public static function addIngredient(drink:Drink, ingredient:Ingredient)
+	{
+		if (ingredientExists(drink, ingredient))
+		{
+			drink.ingredients[ingredient]++;
+			return true;
+		}
+		else
+		{
+			drink.ingredients[ingredient] = 1;
+			return true;
+		}
+
+		return false; // should never happen, but just keeping it to look 'clean' with the addAttribute func
+	}
+
+	public static inline function attributeExists(drink:Drink, attribute:DrinkAttribute)
+	{
+		return drink.attributes != null && drink.attributes.contains(attribute);
+	}
+
+	public static inline function addAttribute(drink:Drink, attribute:DrinkAttribute)
+	{
+		if (!attributeExists(drink, attribute))
+		{
+			drink.attributes.push(attribute);
+			return true;
+		}
+
+		return false;
+	}
+
+	public static inline function clearDrink(drink:Drink)
+	{
+		drink.ingredients = [];
+		drink.attributes = [];
+		return drink;
+	}
 }
