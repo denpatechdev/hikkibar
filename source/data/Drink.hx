@@ -26,5 +26,3 @@ typedef MenuDrink = {
     var description:String;
     var instructions:Drink; // how to make
 }
-
-

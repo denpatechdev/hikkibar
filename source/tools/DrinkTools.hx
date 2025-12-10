@@ -13,6 +13,16 @@ class DrinkTools {
         return num;
     }
 
+	public static function getSummedQuantity(drink:Drink)
+	{
+		var sum:Int = 0;
+		for (k in drink.ingredients.keys())
+		{
+			sum += drink.ingredients[k];
+		}
+		return sum;
+	}
+
     public static function isEqual(drinkA:Drink, drinkB:Drink) {
         if (countIngredients(drinkA) != countIngredients(drinkB) || drinkA.attributes.length != drinkB.attributes.length)
             return false;
@@ -97,7 +107,7 @@ class DrinkTools {
 		return drink.attributes != null && drink.attributes.contains(attribute);
 	}
 
-	public static inline function addAttribute(drink:Drink, attribute:DrinkAttribute)
+	public static function addAttribute(drink:Drink, attribute:DrinkAttribute)
 	{
 		if (!attributeExists(drink, attribute))
 		{
