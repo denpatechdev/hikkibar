@@ -1,0 +1,16 @@
+{
+    "drinks": [
+        {
+            "name": "Rum and Coke",
+            "description": "Some rum and soda together.",
+            "ingredients": [["Rum", 2], ["Soda", 4]],
+            "attributes": ["Iced", "Stirred"]
+        },
+        {
+            "name": "Gin and Tonic",
+            "description": "Gin and tonic water together",
+            "ingredients": [["Gin", 2], ["Tonic Water", 4]],
+            "attributes": ["Iced", "Stirred"]
+        }
+    ]
+}

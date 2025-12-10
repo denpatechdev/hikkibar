@@ -1,0 +1,8 @@
+{
+    "customers": [
+        {
+            "name": "John Doe",
+            "dialoguePath": "assets/data/test/fakefile.json"
+        }
+    ]
+}
