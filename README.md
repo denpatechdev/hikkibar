@@ -4,5 +4,5 @@ A hikikomori, unaware of the happenings in the world, decides to get rid of his 
 
 # Credits
 
-* denpatech - Programming
-* SIFTN - Music, SFX
+* denpatech - Programming, Story
+* SIFTN - Music, SFX, Story
