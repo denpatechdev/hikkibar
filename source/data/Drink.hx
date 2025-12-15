@@ -24,5 +24,6 @@ typedef Drink = {
 typedef MenuDrink = {
     var name:DrinkName;
     var description:String;
+	var price:Int;
     var instructions:Drink; // how to make
 }

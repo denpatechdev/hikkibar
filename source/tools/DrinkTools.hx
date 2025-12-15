@@ -2,9 +2,40 @@ package tools;
 
 import data.Drink;
 import data.Ingredient;
+import haxe.Json;
 import haxe.ds.ArraySort;
+import openfl.Assets;
 
 class DrinkTools {
+
+	public static var drinks:Map<DrinkName, MenuDrink> = [];
+
+	public static function loadDrinks()
+	{
+		var data = Json.parse(Assets.getText('assets/data/drinks.json'));
+		for (i in 0...data.drinks.length)
+		{
+			var drink = data.drinks[i];
+			/*
+						typedef Drink = {
+				var ingredients:Map<Ingredient, Int>;
+				var attributes:Array<DrinkAttribute>;
+				}
+			 */
+			var ingredients:Map<Ingredient, Int> = [];
+			for (j in 0...drink.ingredients.length)
+			{
+				ingredients[drink.ingredients[j][0]] = cast(drink.ingredients[j][1], Int);
+			}
+			drinks[drink.name] = {
+				name: drink.name,
+				description: drink.description,
+				instructions: {ingredients: ingredients, attributes: drink.attributes}
+			};
+		}
+
+		return drinks;
+	}
 
     public static function countIngredients(drink:Drink) {
         var num:Int = 0;

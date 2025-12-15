@@ -31,6 +31,7 @@ class Menu {
             // create MenuDrink and map it a DrinkName
             drinkMap[drinkData.name] = {
                 name: drinkData.name,
+				price: drinkData.price,
                 description: drinkData.description,
                 instructions: drink
             };
